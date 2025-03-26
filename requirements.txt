@@ -11,7 +11,7 @@ peft==0.15.0
 bitsandbytes==0.45.3
 accelerate==1.5.2
 trl==0.15.2
-flash-attn==2.7.4.post1
+# flash-attn
 evaluate==0.4.3
 jiwer==3.1.0
 gradio==5.22.0
@@ -44,3 +44,4 @@ loguru==0.7.3           # for logging
 rich==13.9.4            # for colorful terminal output
 soundfile==0.13.1       # for audio processing
 librosa==0.11.0         # for audio processing
+huggingface_hub==0.29.3 # for model loading

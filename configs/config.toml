@@ -1,0 +1,5 @@
+task_name = "train"
+model_save_path = "checkpoints/"
+
+[logger]
+environment="dev"

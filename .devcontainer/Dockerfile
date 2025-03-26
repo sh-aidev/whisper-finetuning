@@ -3,11 +3,6 @@ FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu24.04 AS build
 # setting non-interactive mode
 ENV DEBIAN_FRONTEND=noninteractive
 
-# creating a non-root user
-ARG USERNAME=developer
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-
 # setting timezone
 RUN ln -fs /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
@@ -36,4 +31,6 @@ WORKDIR /workspace
 COPY requirements.txt .
 
 # installing python packages
-RUN python3 -m pip install --break-system-packages -r requirements.txt
+RUN python3 -m pip install --break-system-packages setuptools wheel packaging && \
+    python3 -m pip install --break-system-packages -r requirements.txt && \
+    python3 -m pip install --break-system-packages flash-attn

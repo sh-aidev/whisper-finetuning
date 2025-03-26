@@ -18,7 +18,8 @@
                 "ms-vscode.cpptools",
                 "ms-python.python",
                 "ms-python.isort",
-                "ms-python.balck-formatter"
+                "ms-python.balck-formatter",
+                "tamasfe.even-better-toml"
             ]
         }
     }
