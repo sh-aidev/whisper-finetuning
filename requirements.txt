@@ -45,3 +45,7 @@ rich==13.9.4            # for colorful terminal output
 soundfile==0.13.1       # for audio processing
 librosa==0.11.0         # for audio processing
 huggingface_hub==0.29.3 # for model loading
+loguru==0.7.3           # for logging
+pyfiglet==1.0.2         # for ascii art
+toml==0.10.2            # for reading toml files
+pydantic>=2.10.6        # for data validation
