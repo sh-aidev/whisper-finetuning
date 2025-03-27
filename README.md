@@ -7,6 +7,7 @@
 [![python](https://img.shields.io/badge/-Python_%7C_3.10-blue?logo=python&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![pytorch](https://img.shields.io/badge/PyTorch_2.0+-ee4c2c?logo=pytorch&logoColor=white)](https://pytorch.org/get-started/locally/)
 ![license](https://img.shields.io/badge/License-MIT-green?logo=mit&logoColor=white)
+![huggingface](https://img.shields.io/badge/Huggingface-Transformers-ff0066?logo=huggingface&logoColor=yellow)
 
 This repository contains the code to finetune the [Whisper](https://huggingface.co/transformers/model_doc/whisper.html) model from Huggingface.
 </div>
