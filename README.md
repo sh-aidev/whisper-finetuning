@@ -72,7 +72,15 @@ python __main__.py
 # To change the configuration, edit the config.toml file in the configs directory
 ```
 
-<!-- ## 📝  Training Results -->
+## 📝  Training Results
+
+### Before training these are the results of the model on the test dataset of common voice 9 in original whisper model
+
+![before](./images/whisper_result.png)
+
+<!-- ### After training on the common voice 17 dataset -->
+
+
 
 ## 📜  References
 - [Huggingface](https://huggingface.co/)
