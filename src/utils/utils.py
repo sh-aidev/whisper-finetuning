@@ -37,20 +37,3 @@ class ForceSaveCallback(TrainerCallback):
         if state.global_step % args.save_steps == 0:
             control.should_save = True
         return control
-
-def print_console_table(rows: List[List[Any]], columns: List[str]=["Data Source Name", "WER %"], title: str= "🚀 WER Matrix") ->None:
-    table = Table(
-        title=f"[bold cyan]{title}[/bold cyan]",  # Title in bold cyan
-        title_style="bold cyan"
-    )
-    for column in columns:
-        table.add_column(f"[magenta]{column}[/magenta]")  # Column headers in magenta
-
-
-    for row in rows:
-        table.add_row(*row, style='bright_green')
-        
-    console = Console()
-    console.print("\n⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️\n")
-    console.print(table)
-    console.print("\n⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️\n")

@@ -48,23 +48,7 @@ class WhisperTrainer():
         return {"wer": wer}
     
     def train(self):
-        # logger.info("Evaluation Before Training Starting...")
-        # wer_before = self.eval_obj.evaluate()
-        # logger.debug(f"WER Before Training: {wer_before}")
-        # wer_before = ['mozilla-foundation/common_voice_17_0', '138.47']
-        # print_console_table([wer_before], title="🚀 WER Matrix Before Training")
-        # logger.info("Evaluation Before Training Completed...")
         logger.info("Training Starting...")
         self.trainer.train()
         logger.info("Training Completed...")
-        # logger.info("Evaluation After Training Starting...")
-        # # wer_after = self.eval_obj.evaluate()
-        # wer_after = ['mozilla-foundation/common_voice_17_0', '130.47']
-        # print_console_table([wer_after], title="🚀 WER Matrix After Training")
-
-        # logger.info("Evaluation After Training Completed...")
-        # wer_diff = float(wer_before[1]) - float(wer_after[1])
-        # if wer_diff < 0:
-        #     logger.info(f"WER Reduced by: {wer_diff}%")
-        # else:
-        #     logger.info(f"WER Improved by: {wer_diff}%")
+        
