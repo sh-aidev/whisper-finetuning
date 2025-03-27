@@ -19,6 +19,9 @@ from src import App
 from src.utils.logger import logger, config
 
 def main():
+    """
+    Main function to start the application
+    """
     logger.info("Starting the application...")
     app = App()
     app.run()

@@ -6,6 +6,13 @@ from rich.console import Console
 from rich.table import Table
 
 def get_train_args(config: Config)-> Seq2SeqTrainingArguments:
+    """
+    Get the training arguments for the Seq2Seq model
+    Args:
+        config (Config): Config object
+    Returns:
+        Seq2SeqTrainingArguments: Training arguments for the Seq2Seq model
+    """
     output_dir_name = config.whisper.model.model_name.split("/")[-1] + "-" + config.whisper.data.language
     output_dir = os.path.join(config.whisper.paths.model_save_path, output_dir_name)
     return Seq2SeqTrainingArguments(
@@ -33,7 +40,19 @@ def get_train_args(config: Config)-> Seq2SeqTrainingArguments:
 
 
 class ForceSaveCallback(TrainerCallback):
+    """
+    Callback to save the model after every save_steps
+    """
     def on_step_end(self, args, state, control, **kwargs):
+        """
+        Save the model after every save_steps
+        Args:
+            args: Training arguments
+            state: Training state
+            control: Training control
+        Returns:
+            control: Training control
+        """
         if state.global_step % args.save_steps == 0:
             control.should_save = True
         return control

@@ -6,13 +6,26 @@ from typing import Any, Dict, List, Union
 from src.utils.config import Config
 
 class PreProcessData():
+    """
+    PreProcessData class to preprocess the data
+    """
     def __init__(self, config: Config) -> None:
+        """
+        Initialize the PreProcessData class
+        Args:
+            config (Config): Config object
+        """
         self.config = config
         self.feature_extractor = WhisperFeatureExtractor.from_pretrained(config.whisper.model.model_name)
         self.tokenizer =  WhisperTokenizer.from_pretrained(config.whisper.model.model_name, language=config.whisper.model.language, task=config.whisper.task_type)
         self.processor = WhisperProcessor.from_pretrained(config.whisper.model.model_name, language=config.whisper.model.language, task=config.whisper.task_type)
 
     def process_data(self) -> Dict[str, (DatasetDict | Dataset | IterableDatasetDict | IterableDataset)]:
+        """
+        Process the data
+        Returns:
+            Dict[str, (DatasetDict | Dataset | IterableDatasetDict | IterableDataset)]: Processed data
+        """
         split = ""
         if self.config.whisper.data.streaming:
             split = "train"
@@ -38,6 +51,13 @@ class PreProcessData():
         }
 
     def map_dataset(self, batch):
+        """
+        Map the dataset
+        Args:
+            batch: Batch data
+        Returns:
+            Dict: Mapped data
+        """
         # load and resample audio data from 48 to 16kHz
         audio = batch["audio"]
 
@@ -51,10 +71,20 @@ class PreProcessData():
 
 @dataclass
 class DataCollatorSpeechSeq2SeqWithPadding:
+    """
+    DataCollatorSpeechSeq2SeqWithPadding class to collate the data
+    """
     processor: Any
     decoder_start_token_id: int
 
     def __call__(self, features: List[Dict[str, Union[List[int], torch.Tensor]]]) -> Dict[str, torch.Tensor]:
+        """
+        Call the DataCollatorSpeechSeq2SeqWithPadding
+        Args:
+            features (List[Dict[str, Union[List[int], torch.Tensor]]]): List of features
+        Returns:
+            Dict[str, torch.Tensor]: Dictionary containing the features
+        """
         # split inputs and labels since they have to be of different lengths and need different padding methods
         # first treat the audio inputs by simply returning torch tensors
         input_features = [{"input_features": feature["input_features"]} for feature in features]

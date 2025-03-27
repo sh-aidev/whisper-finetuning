@@ -3,11 +3,16 @@ from transformers import Seq2SeqTrainer
 from src.utils.logger import logger, config
 from src.core.data import PreProcessData, DataCollatorSpeechSeq2SeqWithPadding
 from src.core.whisper import WhisperModel
-from src.core.evaluate import WhisperEvaluation
-from src.utils.utils import get_train_args, print_console_table, ForceSaveCallback
+from src.utils.utils import get_train_args, ForceSaveCallback
 
 class WhisperTrainer():
+    """
+    WhisperTrainer class to train the model
+    """
     def __init__(self)-> None:
+        """
+        Initialize the WhisperTrainer
+        """
         audio_data_obj = PreProcessData(config)
         self.tokenizer = audio_data_obj.tokenizer
         processor = audio_data_obj.processor
@@ -29,10 +34,16 @@ class WhisperTrainer():
             tokenizer=processor.feature_extractor,
             callbacks=[ForceSaveCallback()],
         )
-        self.eval_obj = WhisperEvaluation(config)
         logger.info("Whisper Trainer Initialized")
 
     def compute_metrics(self, pred):
+        """
+        Compute the metrics for the model
+        Args:
+            pred: Prediction object
+        Returns:
+            Dict: Dictionary containing the metrics
+        """
         pred_ids = pred.predictions
         label_ids = pred.label_ids
 
@@ -48,7 +59,9 @@ class WhisperTrainer():
         return {"wer": wer}
     
     def train(self):
+        """
+        Train the model
+        """
         logger.info("Training Starting...")
         self.trainer.train()
         logger.info("Training Completed...")
-        

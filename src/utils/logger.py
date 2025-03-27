@@ -8,8 +8,18 @@ import sys
 
 # # init logger with custom config
 class Logger:
+    """
+    Logger class to create a logger session
+    """
     @staticmethod
     def create_sess(env):
+        """
+        Create a logger session
+        Args:
+            env (str): Environment
+        Returns:
+            Logger: Logger object
+        """
         logger.remove()
         logger.add(
             "logs/server.log",
@@ -23,7 +33,9 @@ class Logger:
         return logger
 
 class GetConfig:
-
+    """
+    GetConfig class to get the config and logger
+    """
     def __init__(self) -> None:
         self.config_root_dir = "configs"
         self.config = Config(self.config_root_dir)
@@ -33,6 +45,11 @@ class GetConfig:
         )
     
     def run(self) -> Logger:
+        """
+        Run the logger and config
+        Returns:
+            Logger: Logger object
+        """
         return self.logger, self.config
         
 logger, config = GetConfig().run()
