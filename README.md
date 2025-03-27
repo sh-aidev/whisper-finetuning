@@ -15,7 +15,7 @@ This repository contains the code to finetune the [Whisper](https://huggingface.
 ## 📌 Feature
 - [x] Finetuning a whisper model code in a production ready structured way
 - [x] Training a whisper model on a custom dataset from huggingface audio dataset
-- [x] finetuned on languages polish, spanish, italian, german
+- [x] finetuned on languages hindi
 
 ## 📁  Project Structure
 The directory structure of new project looks like this:
