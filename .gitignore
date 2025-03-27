@@ -7,6 +7,12 @@ __pycache__/
 *.so
 
 test*
+checkpoints/*
+!checkpoints/.gitkeep
+data/*
+!data/.gitkeep
+logs/*
+!logs/.gitkeep
 
 # Distribution / packaging
 .Python
